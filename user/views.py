@@ -61,14 +61,14 @@ def download_data(request):
 
 def update_employee(request, user_id):
     employee = Employee.objects.get(user_id=user_id)
+    form = EmployeeForm(request.POST or None, instance=employee)
     if request.method == 'POST':
-        form = EmployeeForm(request.POST, instance=employee)
+        
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfuly registered!')
-            return HttpResponseRedirect(reverse('register-employee'))
+            messages.success(request, 'Successfuly updated!')
+            return HttpResponseRedirect(reverse('employee-list'))
         else:
+            print(form.errors)
             messages.error(request, 'Registration failed!')
-    else:
-        form = EmployeeForm()
-    return render(request, 'user/register-employee.html',{'form': form, 'page_title': 'Register User'})
+    return render(request, 'user/update-employee.html',{'form': form, 'page_title': 'Register User'})

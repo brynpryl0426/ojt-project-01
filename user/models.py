@@ -106,8 +106,9 @@ class Employee(models.Model):
             self.middle_initial = self.middle_initial.upper()
         if self.lastname is not None:
             self.lastname = self.lastname.upper()
-        if self.fullname is not None:
-            self.fullname = self.getfullname()
+
+        self.fullname = self.getfullname()
+        
         if self.city is not None:
             self.city = self.city.upper()
         if self.barangay is not None:
