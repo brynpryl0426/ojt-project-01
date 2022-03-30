@@ -55,7 +55,7 @@
 {% endblock content %} {% block appscript %}
 <script type="text/javascript" src="{% static 'user/js/tablestyle.js' %}"></script>
 <script>
-    TableTitleSetter("{{ page_title }}", "{% url 'employee-list' %}");
+    TableTitleSetter("{{ page_title }}", "{% url 'download-data' %}");
 </script>
 <script>
     url_activator("/");
