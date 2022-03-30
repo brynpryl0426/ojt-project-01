@@ -60,25 +60,25 @@ class Employee(models.Model):
             verbose_name = 'Employee'
             verbose_name_plural = 'Employees'
             db_table = 'tbl_employee'
-    
-    firstname = models.CharField(verbose_name='FIRST NAME', max_length=50)
+    user_id = models.IntegerField(verbose_name="USER ID")
+    firstname = models.CharField(verbose_name='FIRST NAME', max_length=50, blank=True, null=True)
     middle_initial = models.CharField(verbose_name='MIDDLE INITIAL', max_length=1, blank=True, null=True)
-    lastname = models.CharField(verbose_name='LAST NAME', max_length=50)
+    lastname = models.CharField(verbose_name='LAST NAME', max_length=50, blank=True, null=True)
     name_suffix = models.CharField(max_length=10, null=True, blank=True, choices=SUFFIX_CHOICES, verbose_name="Suffix")
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    birthday = models.DateField(verbose_name='BIRTHDAY')
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
+    birthday = models.DateField(verbose_name='BIRTHDAY', blank=True, null=True)
 
-    fullname = models.CharField(max_length=255,verbose_name="Fullname")
+    fullname = models.CharField(max_length=255,verbose_name="Fullname", blank=True, null=True)
     
-    province = models.CharField(verbose_name='PROVINCE', max_length=50)
-    city = models.CharField(verbose_name='CITY', max_length=50)
-    barangay = models.CharField(verbose_name='BARANGAY', max_length=50)
+    province = models.CharField(verbose_name='PROVINCE', max_length=50, blank=True, null=True)
+    city = models.CharField(verbose_name='CITY', max_length=50, blank=True, null=True)
+    barangay = models.CharField(verbose_name='BARANGAY', max_length=50, blank=True, null=True)
     street = models.CharField(verbose_name='STREET', max_length=50, blank=True, null=True)
     
     zip = models.CharField(verbose_name='ZIP', max_length=4, validators=[number], blank=True, null=True)
-    contact = models.CharField(verbose_name='CONTACT', max_length=11, validators=[number])
+    contact = models.CharField(verbose_name='CONTACT', max_length=11, validators=[number], blank=True, null=True)
 
-    hireday = models.DateField(verbose_name='HIREDAY')
+    hireday = models.DateField(verbose_name='HIREDAY', blank=True, null=True)
     job_role = models.ForeignKey(JobRole, on_delete=models.PROTECT, blank=True, null=True, verbose_name='JOB ROLE')
     department = models.ForeignKey(Department, on_delete=models.PROTECT, blank=True, null=True, verbose_name='DEPARTMENT')
 
