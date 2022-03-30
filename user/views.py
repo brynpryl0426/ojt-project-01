@@ -69,6 +69,5 @@ def update_employee(request, user_id):
             messages.success(request, 'Successfuly updated!')
             return HttpResponseRedirect(reverse('employee-list'))
         else:
-            print(form.errors)
             messages.error(request, 'Registration failed!')
     return render(request, 'user/update-employee.html',{'form': form, 'page_title': 'Register User'})
