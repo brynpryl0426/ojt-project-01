@@ -1,0 +1,110 @@
+html,
+body,
+.login-view,
+.view,
+.fixed-sn{
+  height: 100%;
+}
+
+.navbar{
+  background: radial-gradient( circle 732px at 96.2% 89.9%,  rgba(70,66,159,0.4) 0%, rgba(187,43,107,0.4) 92% );
+}
+
+.navbar-brand {
+  font-family: "Noto Sans JP", serif;
+}
+
+.login-page .intro-2 {
+  background: url("../myimg/trafficpage.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.login-page .card {
+  background-color: rgba(229, 228, 255, 0.2);
+  margin-top: 30px;
+}
+
+.purple-gradient {
+  background: linear-gradient(
+    to right,
+    rgba(102, 126, 234, 0.8),
+    rgba(118, 75, 162, 0.8)
+  ) !important;
+}
+
+.login-page .top-nav-collapse {
+  background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(102, 126, 234, 0.7) 17.8%,
+    rgba(118, 75, 162, 0.7) 100.2%
+  );
+}
+
+.login-page .md-form input[type="password"]:focus:not([readonly]),
+.login-page .md-form input[type="text"]:focus:not([readonly]),
+.login-page .md-form input[type="email"]:focus:not([readonly]) {
+  border-bottom: 1px solid #22a7f0;
+  box-shadow: 0 1px 0 0 #22a7f0;
+}
+
+.login-page .md-form input[type="password"]:focus:not([readonly]) + label,
+.login-page .md-form input[type="text"]:focus:not([readonly]) + label,
+.login-page .md-form input[type="email"]:focus:not([readonly]) + label {
+  color: #22a7f0;
+}
+
+.prefix.active,
+.md-form.md-outline input[type="password"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="email"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="url"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="time"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="date"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="datetime-local"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="tel"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="number"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="search"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="search-md"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="text"]:focus:not([readonly]) + label,
+.md-form.md-outline textarea.md-textarea:focus:not([readonly]) + label {
+  color: #22a7f0 !important;
+}
+
+.login-page .navbar:not(.top-nav-collapse) {
+  background-color: #4b7bec50;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background: #4b7bec50;
+  }
+}
+
+.btn-outline-white {
+  color: #fff !important;
+  background-color: transparent !important;
+  border: 1px solid #d2d7d391 !important;
+}
+
+.btn-outline-white:hover {
+  color: #fff !important;
+  background-color: transparent !important;
+  border: 1px solid #eeeeee !important;
+  box-shadow: 0 5px 15px rgba(201, 187, 211, 0.4);
+}
+
+hr {
+  background-color: #dadfe1;
+}
+
+.login-modal-content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-clip: padding-box;
+  border-radius: 0.3rem;
+  outline: 0;
+}

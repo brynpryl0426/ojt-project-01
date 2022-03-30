@@ -1,0 +1,304 @@
+{% extends "./base_designs/base02.html" %} {% load static %} {% block content %} {% load crispy_forms_tags %} {% load widget_tweaks %}
+
+<main class="pb-5">
+    <div class="container-fluid">
+        <!--Grid row -->
+        <div class="row align-items-center justify-content-center mr-2 ml-2">
+            <!-- Grid column -->
+            <div class="col-lg-12 col-md-12 mb-4">
+                <!-- Breadcrumb -->
+                <div class="light-font animated fadeInUp slow">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/" class="white-text">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}" class="white-text">Users List</a></li>
+                            <li class="breadcrumb-item active">Register User</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--Card -->
+                <div class="card card-cascade cascading-admin-card pt-2">
+                    <!-- Card Data -->
+                    <div class="admin-up d-flex justify-content-start">
+                        <div class="purple-gradient py-1 mr-3 z-depth-2" style="border-radius: 3px;">
+                            <i class="fas fa-users animated tada infinite"></i>
+                        </div>
+                        <div class="data">
+                            <h5 class="font-weight-bold dark-grey-text">Register New User</h5>
+                        </div>
+                    </div>
+                    <!-- Card Data -->
+                    <!--Card content -->
+                    <div class="card-body card-body-cascade">
+
+                        <form method="post" novalidate>
+                            {% csrf_token %} {{ form.unique_officer_id | attr:"type:hidden" }}
+                            <div class="row">
+
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.firstname | attr:"class:form-control mb-0" | attr:"autofocus" | attr:"id:firstname"}}
+                                        <label for="firstname">First name</label>
+                                        <div class="red-text">
+                                            <small>
+                                            {% for error in form.firstname.errors %}
+                                                {{error}}
+                                            {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.lastname | attr:"class:form-control mb-0" | attr:"id:lastname"}}
+                                        <label for="lastname">Last name</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.lastname.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.middle_initial | attr:"class:form-control mb-0" | attr:"id:middle_initial"}}
+                                        <label for="middle_initial">Middle initial</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.middle_initial.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.name_suffix | attr:"class:select2 w-100" | attr:"id:name_suffix"}}
+                                        <div class="red-text">
+                                            <small>
+                                            {% for error in form.name_suffix.errors %}
+                                                {{error}}
+                                            {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.birthday | attr:"class:form-control datepicker mb-0" | attr:"id:birthday"}}
+                                        <label for="birthday">Date of Birth</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.birthday.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.gender | attr:"class:select2 w-100" | attr:"id:gender"}}
+                                        <div class="red-text">
+                                            <small>
+                                            {% for error in form.gender.errors %}
+                                                {{error}}
+                                            {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.province | attr:"class:form-control mb-0" | attr:"id:province"}}
+                                        <label for="province">Province</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.province.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.city | attr:"class:form-control mb-0" | attr:"id:city"}}
+                                        <label for="city">City</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.city.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.barangay | attr:"class:form-control mb-0" | attr:"id:barangay"}}
+                                        <label for="barangay">Barangay</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.barangay.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.street | attr:"class:form-control mb-0" | attr:"id:street"}}
+                                        <label for="street">Street</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.street.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.zip | attr:"class:form-control mb-0" | attr:"id:zip"}}
+                                        <label for="zip">Zip Code</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.zip.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="md-form">
+                                        {{ form.contact | attr:"class:form-control mb-0" | attr:"id:contact"}}
+                                        <label for="contact">Contact</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.contact.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="md-form">
+                                        {{ form.hireday | attr:"class:form-control datepicker mb-0" | attr:"id:hireday"}}
+                                        <label for="hireday">Hire Day</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.hireday.errors %}
+                                                    {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="md-form">
+                                        {{ form.job_role | attr:"class:select2 w-100" | attr:"id:job_role"}}
+                                        <div class="red-text">
+                                            <small>
+                                            {% for error in form.job_role.errors %}
+                                                {{error}}
+                                            {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="md-form">
+                                        {{ form.department | attr:"class:select2 w-100" | attr:"id:department"}}
+                                        <div class="red-text">
+                                            <small>
+                                            {% for error in form.department.errors %}
+                                                {{error}}
+                                            {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="md-form">
+                                        {{ form.start_date | attr:"class:form-control datepicker mb-0" | attr:"id:start_date"}}
+                                        <label for="start_date">Job Start Date</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.start_date.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="md-form">
+                                        {{ form.end_date | attr:"class:form-control datepicker mb-0" | attr:"id:end_date"}}
+                                        <label for="end_date">Job End Date</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.end_date.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="button" onclick="alertinfomessage('Confirm Registration?','Confirm to register Employee?')" class="btn btn-indigo">Register Employee&nbsp;&nbsp;<i class="far fa-paper-plane"></i></button>
+                            </div>
+                            {% include "./modals/info.html" %}
+                        </form>
+
+                    </div>
+
+                </div>
+                <!--Card -->
+
+            </div>
+            <!-- Grid column -->
+        </div>
+    </div>
+</main>
+{% endblock content %} {% block appscript %}
+<script>
+    url_activator("/");
+</script>
+<script>
+    // Data Picker Initialization
+    $('.datepicker').pickadate({
+        selectYears: 200,
+        format: "mm/dd/yyyy"
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{% static 'user/js/combobox-reloader.js' %}"></script>
+{% endblock appscript %}

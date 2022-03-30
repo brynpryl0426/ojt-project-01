@@ -9,18 +9,18 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'tvrmsapp/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'user/assets/css/bootstrap.min.css' %}">
     <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="{% static 'tvrmsapp/assets/css/mdb.min.css' %}">
+    <link rel="stylesheet" href="{% static 'user/assets/css/mdb.min.css' %}">
     <!-- DataTables.net  -->
-    <link rel="stylesheet" type="text/css" href="{% static 'tvrmsapp/assets/css/addons/datatables.min.css' %}">
-    <link rel="stylesheet" href="{% static 'tvrmsapp/assets/css/addons/datatables-select.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/assets/css/addons/datatables.min.css' %}">
+    <link rel="stylesheet" href="{% static 'user/assets/css/addons/datatables-select.min.css' %}">
 
-    <link rel="stylesheet" href="{% static 'tvrmsapp/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'tvrmsapp/css/select2-standalone-material.css' %}">
-    <link rel="shortcut icon" href="{% static 'tvrmsapp/myimg/otvrms-logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'user/css/select2-standalone-material.css' %}">
+    <link rel="shortcut icon" href="{% static 'user/myimg/otvrms-logo.png' %}" type="image/x-icon">
     {% block appstyle %}
 
     {% endblock appstyle %}
@@ -28,7 +28,7 @@
 </head>
 <body class="fixed-sn deep-purple-skin">
     <div class="masker mask rgba-stylish-strong"></div>
-    {% include "navigations.html" %}
+    {% include "./navigations.html" %}
 
     {% block content %}
 
@@ -40,7 +40,7 @@
       <!-- Copyright -->
       <div class="footer-copyright py-2 text-center">
         <div class="container-fluid">
-          © 2021 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> OTVRMS </a>
+          © 2022 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> AMS </a>
 
         </div>
       </div>
@@ -51,17 +51,17 @@
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
-    <script src="{% static 'tvrmsapp/assets/js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'user/assets/js/jquery-3.4.1.min.js' %}"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{% static 'tvrmsapp/assets/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/assets/js/popper.min.js' %}"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{% static 'tvrmsapp/assets/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/assets/js/bootstrap.js' %}"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{% static 'tvrmsapp/assets/js/mdb.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/assets/js/mdb.min.js' %}"></script>
     <!-- DataTables  -->
-    <script type="text/javascript" src="{% static 'tvrmsapp/assets/js/addons/datatables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/assets/js/addons/datatables.min.js' %}"></script>
     <!-- DataTables Select  -->
-    <script type="text/javascript" src="{% static 'tvrmsapp/assets/js/addons/datatables-select.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/assets/js/addons/datatables-select.min.js' %}"></script>
     
     <script>
       // SideNav Initialization
@@ -82,9 +82,9 @@
       minScrollbarLength: 20
       });
     </script>
-    <script type="text/javascript" src="{% static 'tvrmsapp/js/sidenav.js' %}"></script>
-    <script src="{% static 'tvrmsapp/js/custom-alert.js' %}"></script>
-    <script src="{% static 'tvrmsapp/js/modal-messages.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/js/sidenav.js' %}"></script>
+    <script src="{% static 'user/js/custom-alert.js' %}"></script>
+    <script src="{% static 'user/js/modal-messages.js' %}"></script>
     {% if messages %} 
       {% for message in messages %}
         {% if forloop.first %}

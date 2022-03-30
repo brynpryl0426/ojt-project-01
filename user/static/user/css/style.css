@@ -1,0 +1,204 @@
+html,
+body {
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+body {
+  background: url("../myimg/traffic.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.sn-bg-4 {
+  background-image: url("../myimg/waterfall.jpg") !important;
+}
+
+.deep-purple-skin .navbar {
+  background: linear-gradient(
+    135.9deg,
+    rgba(109, 25, 252, 0.7) 16.4%,
+    rgba(125, 31, 165, 0.7) 56.1%
+  ) !important;
+}
+
+.darkblue-gradient {
+  background: linear-gradient(
+    70.6deg,
+    rgba(172, 30, 255, 0.7) 0.3%,
+    rgba(65, 35, 251, 0.7) 55.8%,
+    rgba(35, 251, 224, 0.7) 105.1%
+  ) !important;
+}
+
+.masker {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.fixed-sn .double-nav, .fixed-sn footer, .fixed-sn main {
+  padding-left: 0rem;
+}
+
+.double-nav .button-collapse {
+  position: relative;
+  display: block;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 1.4rem;
+}
+
+.side-nav {
+  width: 20rem;
+}
+
+@media screen and (max-width: 600px) {
+  .fixed-sn .container-fluid {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.purple-gradient {
+  background: linear-gradient(
+    to right,
+    rgba(102, 126, 234, 0.8),
+    rgba(118, 75, 162, 0.8)
+  ) !important;
+}
+
+.blue-gradient {
+  background: linear-gradient( 
+    109.6deg,  
+    rgba(119,44,232,0.68) 11.5%, 
+    rgb(232, 173, 44) 91.2% ) !important;
+}
+
+.prefix.active,
+.md-form.md-outline input[type="password"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="email"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="url"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="time"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="date"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="datetime-local"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="tel"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="number"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="search"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="search-md"]:focus:not([readonly]) + label,
+.md-form.md-outline input[type="text"]:focus:not([readonly]) + label,
+.md-form.md-outline textarea.md-textarea:focus:not([readonly]) + label {
+  color: #22a7f0 !important;
+}
+
+@media screen and (max-width: 800px) {
+  .edit-btn {
+    width: 100%;
+  }
+  .ct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+  .list-text-center{
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .edit-btn {
+    width: 100%;
+  }
+  .ct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+}
+
+.select2-selection__rendered {
+  line-height: 40px !important;
+}
+.select2-container .select2-selection--single {
+  height: 40px !important;
+}
+.select2-selection__arrow {
+  height: 40px !important;
+}
+
+.breadcrumb {
+  background: linear-gradient( 111.7deg,  rgba(165,41,185,0.7) 19.9%, rgba(80,177,225,0.7) 95% ) !important;
+}
+
+.light-font .breadcrumb-item + .breadcrumb-item::before {
+  color: #fff;
+}
+
+light-font .breadcrumb-item + .breadcrumb-item::before {
+  color: #fff;
+}
+.light-font .breadcrumb-item.active {
+  color: #cfd8dc;
+}
+
+.ui-autocomplete {
+  max-height: 300px;
+  overflow-y: auto; 
+  overflow-x: hidden;
+  width: 50%;
+}
+.bold-text {
+  font-weight: bold;
+}
+.ui-menu-item a {
+  text-decoration: none;
+  display: block;
+  animation: none;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+  border: none;
+  font-weight: normal;
+}
+
+.select2-result-repository__address{
+  font-size: 10pt;
+  font-weight: 300;
+}
+
+.select2-result-repository__statistics{
+  font-size: 10pt;
+}
+
+#closepopper:hover {
+  cursor: pointer;
+}
+
+.hr-dotted-one{
+  border-top: 1px dashed #8c8b8b;
+}
+
+.hr-dotted-two{
+  border-top: 2px dashed #8c8b8b;
+}
+
+.select2-results__options {
+  height: 200px!important;
+}
