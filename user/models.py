@@ -7,16 +7,32 @@ number = RegexValidator(r'^([\s\d]+)$', 'Only numbers are allowed.')
 GENDER_CHOICES = (('M', _('Male')), ('F', _('Female')))
 
 class Department(models.Model):
-	""" Department model """
-	name = models.CharField(max_length=1024, verbose_name="DEPARTMENT")
+    """ Department model """
+
+    class Meta:
+        verbose_name = 'Department'
+        verbose_name_plural = 'Departments'
+        db_table = 'tbl_department'
+
+    name = models.CharField(max_length=1024, verbose_name="DEPARTMENT")
 
 class JobRole(models.Model):
-	""" JobRole model """
-	title = models.CharField(max_length=1024, verbose_name="TITLE")
+    """ JobRole model """
+    
+    class Meta:
+        verbose_name = 'Job Role'
+        verbose_name_plural = 'Job Roles'
+        db_table = 'tbl_job_role'
+
+    title = models.CharField(max_length=1024, verbose_name="TITLE")
 
 class Employee(models.Model):
     """ Employee model """
-    user_id = models.IntegerField(verbose_name='USER ID', unique=True)
+
+    class Meta:
+            verbose_name = 'Employee'
+            verbose_name_plural = 'Employees'
+            db_table = 'tbl_employee'
     
     firstname = models.CharField(verbose_name='FIRST NAME', max_length=50)
     middlename = models.CharField(verbose_name='MIDDLE NAME', max_length=50)
