@@ -39,7 +39,7 @@ def download_data(request):
                         privilege = 'Admin'
                     
                     if not Employee.objects.filter(user_id=user.user_id).exists():
-                        Employee.objects.create(user_id=user.user_id)
+                        Employee.objects.create(user_id=user.user_id, firstname=user.name, lastname=user.name)
 
                 # Test Voice: Say Thank You
                 conn.test_voice()
