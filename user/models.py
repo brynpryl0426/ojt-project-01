@@ -60,7 +60,7 @@ class Employee(models.Model):
             verbose_name = 'Employee'
             verbose_name_plural = 'Employees'
             db_table = 'tbl_employee'
-    user_id = models.IntegerField(verbose_name="USER ID")
+    user_id = models.IntegerField(verbose_name="USER ID", unique=True)
     firstname = models.CharField(verbose_name='FIRST NAME', max_length=50, blank=True, null=True)
     middle_initial = models.CharField(verbose_name='MIDDLE INITIAL', max_length=1, blank=True, null=True)
     lastname = models.CharField(verbose_name='LAST NAME', max_length=50, blank=True, null=True)
@@ -100,13 +100,18 @@ class Employee(models.Model):
         return self.fullname
 
     def save(self, *args, **kwargs):
-        self.firstname = self.firstname.upper()
+        if self.firstname is not None:
+            self.firstname = self.firstname.upper()
         if self.middle_initial is not None:
             self.middle_initial = self.middle_initial.upper()
-        self.lastname = self.lastname.upper()
-        self.fullname = self.getfullname()
-        self.city = self.city.upper()
-        self.barangay = self.barangay.upper()
+        if self.lastname is not None:
+            self.lastname = self.lastname.upper()
+        if self.fullname is not None:
+            self.fullname = self.getfullname()
+        if self.city is not None:
+            self.city = self.city.upper()
+        if self.barangay is not None:
+            self.barangay = self.barangay.upper()
         if self.street is not None:
             self.street = self.street.upper()
             

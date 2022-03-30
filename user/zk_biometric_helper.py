@@ -13,7 +13,14 @@ def upload_to_biometrics(ip, port, user_id):
         # disable device, this method ensures no activity on the device while the process is run
         conn.disable_device()
 
-        conn.set_user(uid=50, user_id='50', privilege=const.USER_DEFAULT)
+        users = conn.get_users()
+
+        for user in users:
+            privilege = 'User'
+            if user.privilege == const.USER_ADMIN:
+                privilege = 'Admin'
+            print ('+ UID #{}'.format(user.uid))
+
         
         # Test Voice: Say Thank You
         conn.test_voice()
