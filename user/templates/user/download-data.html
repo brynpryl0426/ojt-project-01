@@ -12,7 +12,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/" class="white-text">Home</a></li>
                             <li class="breadcrumb-item"><a href="{% url 'index' %}" class="white-text">Users List</a></li>
-                            <li class="breadcrumb-item active">Register User</li>
+                            <li class="breadcrumb-item active">Download Data</li>
                         </ol>
                     </nav>
                 </div>
@@ -24,7 +24,7 @@
                             <i class="fas fa-users animated tada infinite"></i>
                         </div>
                         <div class="data">
-                            <h5 class="font-weight-bold dark-grey-text">Register New User</h5>
+                            <h5 class="font-weight-bold dark-grey-text">Download Employees</h5>
                         </div>
                     </div>
                     <!-- Card Data -->
@@ -35,13 +35,13 @@
                             {% csrf_token %} {{ form.unique_officer_id | attr:"type:hidden" }}
                             <div class="row">
 
-                                <div class="col-lg-3">
+                                <div class="col-md-6">
                                     <div class="md-form">
-                                        {{ form.firstname | attr:"class:form-control mb-0" | attr:"autofocus" | attr:"id:firstname"}}
-                                        <label for="firstname">First name</label>
+                                        {{ form.ip | attr:"class:form-control mb-0" | attr:"autofocus" | attr:"id:ip"}}
+                                        <label for="ip">IP Address</label>
                                         <div class="red-text">
                                             <small>
-                                            {% for error in form.firstname.errors %}
+                                            {% for error in form.ip.errors %}
                                                 {{error}}
                                             {% endfor %}
                                             </small>
@@ -49,13 +49,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-3">
+                                <div class="col-md-6">
                                     <div class="md-form">
-                                        {{ form.lastname | attr:"class:form-control mb-0" | attr:"id:lastname"}}
-                                        <label for="lastname">Last name</label>
+                                        {{ form.port | attr:"class:form-control mb-0" | attr:"id:port"}}
+                                        <label for="port">Port</label>
                                         <div class="red-text">
                                             <small>
-                                                {% for error in form.lastname.errors %}
+                                                {% for error in form.port.errors %}
                                                 {{error}}
                                                 {% endfor %}
                                             </small>
@@ -63,217 +63,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.middle_initial | attr:"class:form-control mb-0" | attr:"id:middle_initial"}}
-                                        <label for="middle_initial">Middle initial</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.middle_initial.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.name_suffix | attr:"class:select2 w-100" | attr:"id:name_suffix"}}
-                                        <div class="red-text">
-                                            <small>
-                                            {% for error in form.name_suffix.errors %}
-                                                {{error}}
-                                            {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.birthday | attr:"class:form-control datepicker mb-0" | attr:"id:birthday"}}
-                                        <label for="birthday">Date of Birth</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.birthday.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.gender | attr:"class:select2 w-100" | attr:"id:gender"}}
-                                        <div class="red-text">
-                                            <small>
-                                            {% for error in form.gender.errors %}
-                                                {{error}}
-                                            {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.province | attr:"class:form-control mb-0" | attr:"id:province"}}
-                                        <label for="province">Province</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.province.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.city | attr:"class:form-control mb-0" | attr:"id:city"}}
-                                        <label for="city">City</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.city.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.barangay | attr:"class:form-control mb-0" | attr:"id:barangay"}}
-                                        <label for="barangay">Barangay</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.barangay.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.street | attr:"class:form-control mb-0" | attr:"id:street"}}
-                                        <label for="street">Street</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.street.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.zip | attr:"class:form-control mb-0" | attr:"id:zip"}}
-                                        <label for="zip">Zip Code</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.zip.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="md-form">
-                                        {{ form.contact | attr:"class:form-control mb-0" | attr:"id:contact"}}
-                                        <label for="contact">Contact</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.contact.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="md-form">
-                                        {{ form.hireday | attr:"class:form-control datepicker mb-0" | attr:"id:hireday"}}
-                                        <label for="hireday">Hire Day</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.hireday.errors %}
-                                                    {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="md-form">
-                                        {{ form.job_role | attr:"class:select2 w-100" | attr:"id:job_role"}}
-                                        <div class="red-text">
-                                            <small>
-                                            {% for error in form.job_role.errors %}
-                                                {{error}}
-                                            {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="md-form">
-                                        {{ form.department | attr:"class:select2 w-100" | attr:"id:department"}}
-                                        <div class="red-text">
-                                            <small>
-                                            {% for error in form.department.errors %}
-                                                {{error}}
-                                            {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="md-form">
-                                        {{ form.start_date | attr:"class:form-control datepicker mb-0" | attr:"id:start_date"}}
-                                        <label for="start_date">Job Start Date</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.start_date.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="md-form">
-                                        {{ form.end_date | attr:"class:form-control datepicker mb-0" | attr:"id:end_date"}}
-                                        <label for="end_date">Job End Date</label>
-                                        <div class="red-text">
-                                            <small>
-                                                {% for error in form.end_date.errors %}
-                                                {{error}}
-                                                {% endfor %}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="text-center mt-4">
-                                <button type="button" onclick="alertinfomessage('Confirm Registration?','Confirm to register Employee?')" class="btn btn-indigo">Register Employee&nbsp;&nbsp;<i class="far fa-paper-plane"></i></button>
+                                <button type="button" onclick="alertinfomessage('Confirm Download?','Confirm to download user data?')" class="btn btn-indigo">Download Employee&nbsp;&nbsp;<i class="far fa-paper-plane"></i></button>
                             </div>
                             {% include "./modals/info.html" %}
                         </form>

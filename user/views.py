@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .forms import EmployeeForm
+from .forms import EmployeeForm, MachineForm
 from django.contrib import messages
 from django.urls import reverse
 from .models import Employee
@@ -19,37 +19,44 @@ def download_data(request):
     conn = None
     ip = None
     port = None
+    ip = None
 
     if request.method == 'POST':
-        ip = request.POST.get('ip')
-        port = request.POST.get('port')
-    zk = ZK('192.168.10.7', port=4370, timeout=60, password=0, force_udp=False, ommit_ping=False)
-    try:
-        # connect to device
-        conn = zk.connect()
-        # disable device, this method ensures no activity on the device while the process is run
-        conn.disable_device()
-        # another commands will be here!
-        # Get All Users
-        users = conn.get_users()
-        for user in users:
-            privilege = 'User'
-            if user.privilege == const.USER_ADMIN:
-                privilege = 'Admin'
-            Employee.objects.create(user_id=user.user_id)
+        form = MachineForm(request.POST)
+        if form.is_valid():
+            zk = ZK(request.POST.get('ip'), port=int(request.POST.get('port')), timeout=60, password=0, force_udp=False, ommit_ping=False)
+            try:
+                # connect to device
+                conn = zk.connect()
+                # disable device, this method ensures no activity on the device while the process is run
+                conn.disable_device()
+                # another commands will be here!
+                # Get All Users
+                users = conn.get_users()
+                for user in users:
+                    privilege = 'User'
+                    if user.privilege == const.USER_ADMIN:
+                        privilege = 'Admin'
+                    
+                    if not Employee.objects.filter(user_id=user.user_id).exists():
+                        Employee.objects.create(user_id=user.user_id)
 
-        # Test Voice: Say Thank You
-        conn.test_voice()
-        # re-enable device after all commands already executed
-        conn.enable_device()
-    except Exception as e:
-        print ("Process terminate : {}".format(e))
-        print(type(e).__name__, e.args)
-        messages.error(request, "Process terminate : {}".format(e))
-    finally:
-        if conn:
-            conn.disconnect()
-    return render(request, 'user/download-data.html',{'page_title': 'Download Data'})
+                # Test Voice: Say Thank You
+                conn.test_voice()
+                # re-enable device after all commands already executed
+                conn.enable_device()
+                messages.success(request, 'Employees Successfuly registered!')
+            except Exception as e:
+                print ("Process terminate : {}".format(e))
+                print(type(e).__name__, e.args)
+                messages.error(request, "Process terminate : {}".format(e))
+            finally:
+                if conn:
+                    conn.disconnect()
+            ip = request.POST.get('ip')
+    else:
+        form = MachineForm(initial={'ip':ip,'port': 4370})
+    return render(request, 'user/download-data.html',{'page_title': 'Download Data', 'form': form})
 
 
 def update_employee(request, user_id):

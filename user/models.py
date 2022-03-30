@@ -85,8 +85,8 @@ class Employee(models.Model):
     start_date = models.DateField(blank=True, null=True, verbose_name='START DATE')
     end_date = models.DateField(null=True, blank=True, verbose_name='END DATE')
 
-    def __unicode__(self):
-        return "%s"%self.user
+    def __str__(self):
+        return str(self.user_id)
 
     def getfullname(self):
         if self.middle_initial is None and self.name_suffix is None:
