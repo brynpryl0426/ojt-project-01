@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+
+    {% load static %}
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'tvrmsapp/assets/css/bootstrap.min.css' %}">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'tvrmsapp/assets/css/mdb.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'tvrmsapp/myimg/otvrms-logo.png' %}" type="image/x-icon">
+
+    {% block appstyle %}
+
+    {% endblock appstyle %}
+   
+</head>
+<body>
+    {% block content %}
+
+    {% endblock content %}
+    
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script src="{% static 'tvrmsapp/assets/js/jquery-3.4.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'tvrmsapp/assets/js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'tvrmsapp/assets/js/bootstrap.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'tvrmsapp/assets/js/mdb.min.js' %}"></script>
+    <script src="{% static 'tvrmsapp/js/custom-alert.js' %}"></script>
+    {% if messages %} 
+      {% for message in messages %}
+        {% if forloop.first %}
+          <script>
+              notify_message("{{message}}", "{{ message.tags }}");
+          </script>
+        {%endif%}
+      {% endfor %} 
+    {% endif %} 
+    
+    {% block appscript %}
+
+    {% endblock appscript %}
+</body>
+</html>
