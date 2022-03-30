@@ -60,14 +60,18 @@ def download_data(request):
 
 
 def update_employee(request, user_id):
-    employee = Employee.objects.get(user_id=user_id)
-    form = EmployeeForm(request.POST or None, instance=employee)
-    if request.method == 'POST':
-        
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfuly updated!')
-            return HttpResponseRedirect(reverse('employee-list'))
-        else:
-            messages.error(request, 'Registration failed!')
+    try:
+        employee = Employee.objects.get(user_id=user_id)
+        form = EmployeeForm(request.POST or None, instance=employee)
+        if request.method == 'POST':
+            
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Successfuly updated!')
+                return HttpResponseRedirect(reverse('employee-list'))
+            else:
+                messages.error(request, 'Registration failed!')
+    except Employee.DoesNotExist:
+        messages.error(request, 'Employee does not exist!')
+        return HttpResponseRedirect(reverse('employee-list'))
     return render(request, 'user/update-employee.html',{'form': form, 'page_title': 'Register User'})
