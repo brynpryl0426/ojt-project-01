@@ -111,3 +111,16 @@ class Employee(models.Model):
             self.street = self.street.upper()
             
         super(Employee, self).save(*args, **kwargs)
+
+class Machines(models.Model):
+    """ Machine model """
+    ip = models.GenericIPAddressField(verbose_name='IP ADDRESS')
+    port = models.CharField(verbose_name='PORT', max_length=5, validators=[number])
+    machine_name = models.CharField(verbose_name='MACHINE NAME', max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return self.ip
+    
+    def save(self, *args, **kwargs):
+        self.machine_name = self.ip
+        super(Machines, self).save(*args, **kwargs)
