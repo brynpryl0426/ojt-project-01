@@ -2,6 +2,9 @@ from django.shortcuts import render
 from zk import ZK, const
 from django.contrib import messages
 
+from user.models import Employee
+from .models import EmployeeCheckInOut
+
 # Create your views here.
 def employee_logs(request):
     conn = None
@@ -21,7 +24,9 @@ def employee_logs(request):
         attendances = conn.get_attendance()
         
         for attendance in attendances:
-            print(attendance)
+            print(attendance.user_id)
+            print(attendance.timestamp)
+            EmployeeCheckInOut.objects.create(employee=Employee.objects.get(user_id=attendance.user_id), checktime=attendance.timestamp)
 
         # Test Voice: Say Thank You
         conn.test_voice()
