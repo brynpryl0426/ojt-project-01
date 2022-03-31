@@ -10,7 +10,7 @@ class EmployeeCheckInOut(models.Model):
         db_table = 'tbl_employee_check_in_out'
         
     employee = models.ForeignKey(Employee, on_delete=models.PROTECT, verbose_name='Employee')
-    checktime = models.DateTimeField(verbose_name='Check Time')
+    checktime = models.DateTimeField(verbose_name='Check Time', unique=True)
 
     def __str__(self):
         return f"{str(self.employee)} - {str(self.checktime)}"

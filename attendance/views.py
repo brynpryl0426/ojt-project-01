@@ -26,7 +26,8 @@ def employee_logs(request):
         for attendance in attendances:
             print(attendance.user_id)
             print(attendance.timestamp)
-            EmployeeCheckInOut.objects.create(employee=Employee.objects.get(user_id=attendance.user_id), checktime=attendance.timestamp)
+            if not EmployeeCheckInOut.objects.filter(employee=Employee.objects.get(user_id=attendance.user_id), checktime=attendance.timestamp).exists():
+                EmployeeCheckInOut.objects.create(employee=Employee.objects.get(user_id=attendance.user_id), checktime=attendance.timestamp)
 
         # Test Voice: Say Thank You
         conn.test_voice()
