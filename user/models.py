@@ -85,6 +85,8 @@ class Employee(models.Model):
     start_date = models.DateField(blank=True, null=True, verbose_name='START DATE')
     end_date = models.DateField(null=True, blank=True, verbose_name='END DATE')
 
+    date_updated = models.DateTimeField(auto_now=True, verbose_name='DATE UPDATED', editable=False)
+
     def __str__(self):
         return str(self.user_id)
 

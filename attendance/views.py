@@ -42,4 +42,4 @@ def employee_logs(request):
         if conn:
             conn.disconnect()
       
-    return render(request, 'attendance/employee-logs.html', {})
+    return render(request, 'attendance/employee-logs.html', {'attendances': attendances, 'page_title': 'Employee Logs'})

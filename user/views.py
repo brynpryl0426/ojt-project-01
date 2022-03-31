@@ -11,7 +11,7 @@ def index(request):
     return render(request, 'user/index.html',{})
 
 def employee_list(request):
-    employees = Employee.objects.all()
+    employees = Employee.objects.all().order_by('-date_updated')
     return render(request, 'user/employee-list.html', {'employees': employees, 'page_title': 'Employee List'})
 
 def download_data(request):
@@ -70,7 +70,7 @@ def update_employee(request, user_id):
                 messages.success(request, 'Successfuly updated!')
                 return HttpResponseRedirect(reverse('employee-list'))
             else:
-                messages.error(request, 'Registration failed!')
+                messages.error(request, 'Update failed!')
     except Employee.DoesNotExist:
         messages.error(request, 'Employee does not exist!')
         return HttpResponseRedirect(reverse('employee-list'))

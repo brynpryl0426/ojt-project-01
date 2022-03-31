@@ -15,9 +15,8 @@ class EmployeeForm(forms.ModelForm):
 
     firstname = forms.CharField(label='FIRST NAME')
     lastname = forms.CharField(label='LAST NAME')
-    gender = forms.ChoiceField()
+    gender = forms.ChoiceField(choices=GENDER_CHOICES)
     birthday = forms.DateField(label='BIRTHDAY')
-    fullname = forms.CharField(label="Fullname")
     province = forms.CharField(label='PROVINCE')
     city = forms.CharField(label='CITY')
     barangay = forms.CharField(label='BARANGAY')
