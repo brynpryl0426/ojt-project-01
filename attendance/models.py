@@ -13,4 +13,4 @@ class EmployeeCheckInOut(models.Model):
     checktime = models.DateTimeField(verbose_name='Check Time', unique=True)
 
     def __str__(self):
-        return f"{str(self.employee)} - {str(self.checktime)}"
+        return f"{str(self.employee.fullname)} - {str(self.checktime)}"
