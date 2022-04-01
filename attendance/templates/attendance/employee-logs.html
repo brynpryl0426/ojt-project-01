@@ -1,4 +1,4 @@
-{% extends "user/base_designs/base02.html" %} {% load static %} {% block appstyle %}
+{% extends "user/base_designs/base02.html" %} {% load static %} {% block appstyle %} {% load crispy_forms_tags %} {% load widget_tweaks %}
 <link rel="stylesheet" href="{% static 'user/css/tablestyle.css' %}"> {% endblock appstyle %} {% block content %}
 <main class="pb-5">
     <div class="container-fluid">
@@ -11,34 +11,89 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/" class="white-text">Home</a></li>
-                            <li class="breadcrumb-item active">Employee List</li>
+                            <li class="breadcrumb-item active">Employee Logs</li>
                         </ol>
                     </nav>
                 </div>
+                <!--Card -->
+                <div class="card card-cascade cascading-admin-card pt-2 mb-2">
+                    <!-- Card Data -->
+                    <div class="admin-up d-flex justify-content-start">
+                        <div class="purple-gradient py-1 mr-3 z-depth-2" style="border-radius: 3px;">
+                            <i class="fas fa-users animated tada infinite"></i>
+                        </div>
+                        <div class="data">
+                            <h5 class="font-weight-bold dark-grey-text">Download Logs</h5>
+                        </div>
+                    </div>
+                    <!-- Card Data -->
+                    <!--Card content -->
+                    <div class="card-body card-body-cascade">
+
+                        <form method="post" novalidate>
+                            {% csrf_token %} {{ form.unique_officer_id | attr:"type:hidden" }}
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="md-form">
+                                        {{ form.ip | attr:"class:form-control mb-0" | attr:"autofocus" | attr:"id:ip"}}
+                                        <label for="ip">IP Address</label>
+                                        <div class="red-text">
+                                            <small>
+                                            {% for error in form.ip.errors %}
+                                                {{error}}
+                                            {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="md-form">
+                                        {{ form.port | attr:"class:form-control mb-0" | attr:"id:port"}}
+                                        <label for="port">Port</label>
+                                        <div class="red-text">
+                                            <small>
+                                                {% for error in form.port.errors %}
+                                                {{error}}
+                                                {% endfor %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-indigo w-100">Display Attendance&nbsp;&nbsp;<i class="far fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+                <!--Card -->
                 <div class="card">
                     <div class="card-body">
                         <table id="dtMaterialDesign" class="table table-hover" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Name</th>
-                                    <th>Job Role</th>
-                                    <th>Department</th>
-                                    <th>Action</th>
+                                    <th>Check Time</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for employee in employees %}
+                                {% for attendance in attendances.itertuples %}
                                 <tr>
-                                    <td data-label="ID">{{employee.user_id}}</td>
-                                    <td data-label="Name">
-                                        {{employee.fullname}}
+                                    <td data-label="Name">{{attendance.emp_names}}</td>
+                                    <td data-label="Check Time">
+                                        {{attendance.timestamps}}
                                     </td>
-                                    <td data-label="Job Role">{{employee.job_role}}</td>
-                                    <td data-label="Department">
-                                        {{employee.department}}
-                                    </td>
-                                    <td><a class="btn purple-gradient btn-sm m-0 edit-btn" href="{% url 'update-employee' employee.user_id  %}">Edit</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -55,7 +110,6 @@
 {% endblock content %} {% block appscript %}
 <script type="text/javascript" src="{% static 'user/js/tablestyle.js' %}"></script>
 <script>
-    TableTitleSetter("{{ page_title }}", "{% url 'download-data' %}");
 </script>
 <script>
     url_activator("/");

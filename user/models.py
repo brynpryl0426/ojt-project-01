@@ -60,7 +60,7 @@ class Employee(models.Model):
             verbose_name = 'Employee'
             verbose_name_plural = 'Employees'
             db_table = 'tbl_employee'
-    user_id = models.IntegerField(verbose_name="USER ID", unique=True)
+    user_id = models.BigIntegerField(verbose_name="USER ID", unique=True)
     firstname = models.CharField(verbose_name='FIRST NAME', max_length=50, blank=True, null=True)
     middle_initial = models.CharField(verbose_name='MIDDLE INITIAL', max_length=1, blank=True, null=True)
     lastname = models.CharField(verbose_name='LAST NAME', max_length=50, blank=True, null=True)
