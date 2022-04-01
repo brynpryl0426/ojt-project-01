@@ -24,5 +24,6 @@ class EmployeeForm(forms.ModelForm):
     hireday = forms.DateField(label='HIREDAY')
 
 class MachineForm(forms.Form):
-    ip = forms.ModelChoiceField(queryset=Machines.objects.all())
+    ip = forms.ChoiceField(choices=[
+    (choice, choice) for choice in Machines.objects.all()])
     port = forms.CharField(label='Port', max_length=5, required=True, validators=[number])

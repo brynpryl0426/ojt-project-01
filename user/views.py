@@ -46,6 +46,7 @@ def download_data(request):
                 # re-enable device after all commands already executed
                 conn.enable_device()
                 messages.success(request, 'Employees Successfuly registered!')
+                return HttpResponseRedirect(reverse('employee-list'))
             except Exception as e:
                 print ("Process terminate : {}".format(e))
                 print(type(e).__name__, e.args)
