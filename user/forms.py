@@ -1,5 +1,5 @@
 from django import forms
-from .models import Employee
+from .models import Employee, Machines
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 
@@ -24,5 +24,5 @@ class EmployeeForm(forms.ModelForm):
     hireday = forms.DateField(label='HIREDAY')
 
 class MachineForm(forms.Form):
-    ip = forms.GenericIPAddressField(label='IP Address', required=True)
+    ip = forms.ModelChoiceField(queryset=Machines.objects.all())
     port = forms.CharField(label='Port', max_length=5, required=True, validators=[number])

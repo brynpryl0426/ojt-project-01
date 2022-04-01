@@ -44,6 +44,14 @@ $("#department").select2({
     allowClear: true,
 });
 
+$("#ip").select2({
+    minimumResultsForSearch: Infinity,
+    theme: "material",
+    placeholder: "IP address",
+    width: "100%",
+    allowClear: true,
+});
+
 $("#position").select2({
     minimumResultsForSearch: Infinity,
     theme: "material",

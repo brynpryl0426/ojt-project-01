@@ -37,8 +37,7 @@
 
                                 <div class="col-md-6">
                                     <div class="md-form">
-                                        {{ form.ip | attr:"class:form-control mb-0" | attr:"autofocus" | attr:"id:ip"}}
-                                        <label for="ip">IP Address</label>
+                                        {{ form.ip | attr:"class:select2 w-100" | attr:"id:ip"}}
                                         <div class="red-text">
                                             <small>
                                             {% for error in form.ip.errors %}
